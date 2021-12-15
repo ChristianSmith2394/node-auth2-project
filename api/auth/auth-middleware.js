@@ -70,7 +70,7 @@ const checkUsernameExists = async (req, res, next) => {
       const [user] = await findBy({username: req.body.username})
       if(!user){
         next({
-          status: 422,
+          status: 401,
           message: 'Invalid credentials'
         })
       }else{
@@ -110,7 +110,7 @@ const validateRoleName = (req, res, next) => {
     }else if (req.body.role_name.trim().length > 32){
       next({
         status: 422,
-        message: 'Role name can not be longer than 32 characters'
+        message: 'can not be longer than 32 chars'
       })
     }else {
       req.role_name = req.body.role_name.trim()
